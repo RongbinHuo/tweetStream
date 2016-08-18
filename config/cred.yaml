@@ -1,9 +1,0 @@
-twitter:
-  access_token: 861777992-0jnfEW317U6UPG2zj74dY3baslvh2Bd5mBOHxvMr
-  access_token_secret: ueIysJeHEBQuvHVtZnsYu2WEv9mCDznpSbkPgyUxEsuNm
-  consumer_key: UC9BS80NQnafk5o2uU5xie0DS
-  consumer_secret: OS8CrYpVTZcOXxnKDAARySBKGNCsXtE1k5YTmWfJGcvyWHJ8S6
-aws:
-  bucket_name: rongbindashboard
-  aws_access_key_id: AKIAJKNDGNPIHPT64EKA
-  aws_secret_access_key: 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
