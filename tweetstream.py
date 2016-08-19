@@ -9,8 +9,9 @@ import yaml
 import s3_utils
 from utils import rel_path
 
-company = 'AMAZON'
-stock = '$AMZN'
+company_info = yaml.safe_load(file(rel_path('config/cred.yaml')))['company']
+company = company_info['company_name']
+stock = company_info['stock']
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 json_data = {}
 class StdOutListener(StreamListener):
@@ -33,7 +34,7 @@ class StdOutListener(StreamListener):
             record['Company'] = company
             record['Stock'] = stock
             self.num_tweets += 1
-            if self.num_tweets < 3000:
+            if self.num_tweets < 3:
                 print 'Saving to json'
                 print record
                 json_data[str(self.num_tweets)] = record
@@ -44,7 +45,7 @@ class StdOutListener(StreamListener):
                     json.dump(json_data, tf)
                 json_data = {}
                 print 'Uploading to S3'
-                self.conn.upload_file(self.filename, self.filename, company)
+                self.conn.upload_file(self.filename, company+'/'+self.filename)
                 print 'Uploading to S3 Done'
                 os.remove(self.filename)
                 self.num_tweets = 0

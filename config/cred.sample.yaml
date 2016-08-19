@@ -7,3 +7,6 @@ aws:
   bucket_name: rongbindashboard
   aws_access_key_id: 
   aws_secret_access_key: 
+company:
+  company_name:
+  stock:
