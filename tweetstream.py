@@ -34,7 +34,7 @@ class StdOutListener(StreamListener):
             record['Company'] = company
             record['Stock'] = stock
             self.num_tweets += 1
-            if self.num_tweets < 3:
+            if self.num_tweets < 3000:
                 print 'Saving to json'
                 print record
                 json_data[str(self.num_tweets)] = record
