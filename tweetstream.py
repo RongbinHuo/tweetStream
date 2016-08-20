@@ -35,10 +35,10 @@ class StdOutListener(StreamListener):
             record['Stock'] = stock
             self.num_tweets += 1
             if self.num_tweets < 3000:
-                print 'Saving to json'
-                print record
+                # print 'Saving to json'
+                # print record
                 json_data[str(self.num_tweets)] = record
-                print json_data
+                # print json_data
             else:
                 print 'Saving to local file'
                 with open(self.filename,'w') as tf:
