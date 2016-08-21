@@ -10,3 +10,6 @@ aws:
 company:
   company_name:
   stock:
+many_company:
+  company_name: APPLE,AMAZON,GOOGLE,Microsoft,Facebook,Oracle,Intel,Cisco,IBM
+  stock: $APPL,$AMZN,$GOOGLE,$MSFT,$FB,$ORCL,$INTC,$CSCO,$IBM
