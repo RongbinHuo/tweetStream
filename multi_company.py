@@ -41,24 +41,6 @@ class StdOutListener(StreamListener):
             return True
         else:
             return False
-            # self.num_tweets += 1
-            # if self.num_tweets < 3000:
-            #     print 'Saving to json'
-            #     print record
-            #     json_data[str(self.num_tweets)] = record
-            #     print json_data
-            # else:
-            #     print 'Saving to local file'
-            #     with open(self.filename,'w') as tf:
-            #         json.dump(json_data, tf)
-            #     json_data = {}
-            #     print 'Uploading to S3'
-            #     self.conn.upload_file(self.filename, company+'/'+self.filename)
-            #     print 'Uploading to S3 Done'
-            #     os.remove(self.filename)
-            #     self.num_tweets = 0
-            #     self.filename = company+'rongbin.dashboard'+time.strftime("%Y%m%d%H%M%S")+'.txt'
-        # return True
 
     def on_error(self, status):
         print status
@@ -71,8 +53,8 @@ if __name__ == '__main__':
     conn = s3_utils.S3Connection.from_yaml(rel_path('config/cred.yaml'), 'aws')
     start_index = 0
     while start_index<company_len:
-        company = company_ary[start_index]
-        stock = stock_ary[start_index]
+        company = company_ary[start_index].upper()
+        stock = stock_ary[start_index].upper()
         print "Collecting data for company "+company
         time_end = time.time() + 60 * 15
         filename = company+'rongbin.dashboard'+time.strftime("%Y%m%d%H%M%S")+'.txt'
@@ -90,14 +72,6 @@ if __name__ == '__main__':
         start_index = start_index+1
         if start_index == company_len:
             start_index = 0
-
-    #This handles Twitter authetification and the connection to Twitter Streaming API
-    # l = StdOutListener()
-    # tweet_cred = yaml.safe_load(file(rel_path('config/cred.yaml')))['twitter']
-    # auth = OAuthHandler(tweet_cred['consumer_key'], tweet_cred['consumer_secret'])
-    # auth.set_access_token(tweet_cred['access_token'], tweet_cred['access_token_secret'])
-    # stream = Stream(auth, l)
-    # stream.filter(track=[company, stock])
 
 
 
